@@ -1,0 +1,31 @@
+
+name: Day 2 - GitHub Events
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  event-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display event information
+        run: |
+          echo "GitHub Actions Event Lab"
+          echo "Event name: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Repository: ${{ github.repository }}"
+
+      - name: Show repository files
+        run: ls -la
